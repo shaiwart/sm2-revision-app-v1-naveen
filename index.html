@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Revision Notebook (SM2)</title>
+		<link rel="icon" type="image/png" href="./assets/favicon.png" />
+		<link rel="stylesheet" href="style.css" />
+		<meta name="color-scheme" content="light dark" />
+		<meta name="theme-color" content="#21808d" />
+		<meta
+			name="description"
+			content="Revision Notebook - spaced repetition (SM-2) for DSA topics."
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Header: website name (left) and theme toggle (right) -->
+			<header class="header">
+				<div class="header__left">
+					<span class="brand__logo" aria-hidden="true"
+						><img src="./assets/image-2.png" style="height: 30px"
+					/></span>
+					<span class="brand__name">Revision Notebook (SM2)</span>
+				</div>
+				<div class="header__right">
+					<button
+						id="theme-toggle"
+						class="btn btn--outline btn--sm"
+						aria-pressed="false"
+						aria-label="Toggle dark mode"
+					>
+						🌞
+					</button>
+				</div>
+			</header>
+
+			<!-- Navigation -->
+			<nav class="navigation">
+				<button
+					class="btn btn--outline nav-btn active"
+					data-view="dashboard"
+				>
+					Dashboard
+				</button>
+				<button class="btn btn--outline nav-btn" data-view="add-topic">
+					Add Topic
+				</button>
+			</nav>
+
+			<!-- Dashboard View -->
+			<div id="dashboard-view" class="view active">
+				<div class="stats-grid">
+					<div class="stat-card">
+						<h3 id="total-topics">0</h3>
+						<p>Total Topics</p>
+					</div>
+					<div class="stat-card">
+						<h3 id="due-topics">0</h3>
+						<p>Due for Review</p>
+					</div>
+					<div class="stat-card">
+						<h3 id="completed-today">0</h3>
+						<p>Completed Today</p>
+					</div>
+					<div class="stat-card">
+						<h3 id="due-next-7">0</h3>
+						<p>Due in 7 Days</p>
+					</div>
+					<div class="stat-card">
+						<h3 id="current-streak">0</h3>
+						<p>Current Streak</p>
+					</div>
+					<div class="stat-card">
+						<h3 id="longest-streak">0</h3>
+						<p>Longest Streak</p>
+					</div>
+				</div>
+
+				<!-- Category and Sub-Category Filters -->
+				<div class="review-section">
+					<div class="filters-card">
+						<div class="filters-grid">
+							<div class="form-group">
+								<label class="form-label" for="category-filter"
+									>Filter by Category:</label
+								>
+								<select
+									id="category-filter"
+									class="form-control select-compact"
+								>
+									<option value="all">All Categories</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label
+									class="form-label"
+									for="subcategory-filter"
+									>Filter by Sub-Category:</label
+								>
+								<select
+									id="subcategory-filter"
+									class="form-control select-compact"
+									disabled
+								>
+									<option value="all">
+										All Sub-Categories
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label
+									class="form-label"
+									for="overdue-days-filter"
+									>Overdue (days):</label
+								>
+								<div class="inline-actions">
+									<select
+										id="overdue-days-operator"
+										class="form-control select-compact"
+										aria-label="Overdue operator"
+									>
+										<option value="gte">≥</option>
+										<option value="lte">≤</option>
+									</select>
+									<input
+										id="overdue-days-filter"
+										type="number"
+										min="0"
+										inputmode="numeric"
+										class="form-control select-compact"
+										placeholder="e.g., 3"
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button
+						id="start-review-btn"
+						class="btn btn--primary btn--lg btn--full-width"
+					>
+						Start Review Session
+					</button>
+				</div>
+
+				<!-- Topics List -->
+				<div class="topics-section">
+					<div class="topics-header">
+						<h3>All Topics</h3>
+						<div class="toolbar">
+							<input
+								id="topic-search"
+								type="search"
+								class="form-control"
+								placeholder="Search topics, descriptions, categories..."
+							/>
+							<label for="topic-sort" class="sr-only">Sort</label>
+							<select
+								id="topic-sort"
+								class="form-control select-compact"
+							>
+								<option value="next-asc">Next Review ↑</option>
+								<option value="next-desc">Next Review ↓</option>
+								<option value="name-asc">Name A-Z</option>
+								<option value="name-desc">Name Z-A</option>
+								<option value="added-desc">Date Added ↓</option>
+								<option value="added-asc">Date Added ↑</option>
+							</select>
+						</div>
+					</div>
+					<div id="topics-list" class="topics-list"></div>
+				</div>
+			</div>
+
+			<!-- Add Topic View -->
+			<div id="add-topic-view" class="view">
+				<div class="card">
+					<div class="card__body">
+						<h2>Add New Topic</h2>
+						<form id="add-topic-form">
+							<div class="form-group">
+								<label class="form-label" for="topic-name"
+									>Topic Name *</label
+								>
+								<input
+									type="text"
+									id="topic-name"
+									name="name"
+									class="form-control"
+									required
+								/>
+							</div>
+
+							<!-- Description moved just below Topic Name -->
+							<div class="form-group">
+								<label
+									class="form-label"
+									for="topic-description"
+									>Description</label
+								>
+								<textarea
+									id="topic-description"
+									name="description"
+									class="form-control"
+									rows="3"
+									placeholder="Describe the concept, key points, or techniques..."
+								></textarea>
+							</div>
+
+							<!-- Categories (choose one or more) -->
+							<div class="form-group">
+								<div class="inline-header">
+									<label
+										class="form-label"
+										id="topic-additional-categories-label"
+										>Categories *</label
+									>
+									<div class="inline-actions">
+										<input
+											type="text"
+											id="add-new-category-name"
+											class="form-control input-sm"
+											placeholder="New category..."
+										/>
+										<button
+											type="button"
+											id="add-category-btn"
+											class="btn btn--outline btn--sm"
+										>
+											Add Category
+										</button>
+									</div>
+								</div>
+								<div
+									id="topic-additional-categories"
+									class="checkbox-group"
+									role="group"
+									aria-labelledby="topic-additional-categories-label"
+								></div>
+							</div>
+
+							<!-- Sub-Categories (optional, multi-select via checkboxes) -->
+							<div class="form-group">
+								<div class="inline-header">
+									<label
+										class="form-label"
+										id="topic-subcategories-label"
+										>Sub-Categories (optional)</label
+									>
+									<div class="inline-actions">
+										<input
+											type="text"
+											id="add-new-subcategory-name"
+											class="form-control input-sm"
+											placeholder="New sub-category..."
+										/>
+										<select
+											id="add-subcategory-parent"
+											class="form-control input-sm"
+										></select>
+										<button
+											type="button"
+											id="add-subcategory-btn"
+											class="btn btn--outline btn--sm"
+										>
+											Add Sub-Category
+										</button>
+									</div>
+								</div>
+								<div
+									id="topic-subcategories"
+									class="checkbox-group"
+									role="group"
+									aria-labelledby="topic-subcategories-label"
+								></div>
+							</div>
+
+							<div class="form-actions">
+								<button type="submit" class="btn btn--primary">
+									Add Topic
+								</button>
+								<button
+									type="button"
+									id="cancel-add-topic"
+									class="btn btn--outline"
+								>
+									Cancel
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+			<!-- Review View -->
+			<div id="review-view" class="view">
+				<div class="review-container">
+					<div class="review-header">
+						<div class="review-progress">
+							<span id="review-progress-text"
+								>Question 1 of 5</span
+							>
+							<div class="progress-bar">
+								<div
+									id="progress-fill"
+									class="progress-fill"
+								></div>
+							</div>
+						</div>
+						<div class="question-picker">
+							<label for="question-picker" class="sr-only"
+								>Pick Question</label
+							>
+							<select
+								id="question-picker"
+								class="form-control select-compact"
+								disabled
+							>
+								<option value="">Pick question...</option>
+							</select>
+						</div>
+						<button
+							id="end-review-btn"
+							class="btn btn--outline btn--sm"
+						>
+							End Review Session
+						</button>
+					</div>
+
+					<div class="review-content">
+						<h2 id="current-topic-name">Topic Name</h2>
+						<div class="review-category">
+							<span
+								id="current-topic-category"
+								class="status status--info"
+							></span>
+							<span
+								id="current-topic-subcategory"
+								class="status status--success"
+							></span>
+						</div>
+						<p id="current-topic-description">
+							Topic description...
+						</p>
+
+						<div class="review-question">
+							<p>How well do you remember this topic?</p>
+						</div>
+					</div>
+
+					<div class="review-actions">
+						<button
+							class="btn btn--outline difficulty-btn"
+							data-difficulty="0"
+						>
+							Again
+						</button>
+						<button
+							class="btn btn--outline difficulty-btn"
+							data-difficulty="1"
+						>
+							Hard
+						</button>
+						<button
+							class="btn btn--outline difficulty-btn"
+							data-difficulty="2"
+						>
+							Good
+						</button>
+						<button
+							class="btn btn--primary difficulty-btn"
+							data-difficulty="3"
+						>
+							Easy
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Review Complete View -->
+			<div id="review-complete-view" class="view">
+				<div class="card">
+					<div class="card__body text-center">
+						<h2>Review Session Complete!</h2>
+						<div class="completion-stats">
+							<div class="stat-item">
+								<span id="topics-reviewed" class="stat-number"
+									>0</span
+								>
+								<span class="stat-label">Topics Reviewed</span>
+							</div>
+							<div class="stat-item">
+								<span
+									id="average-difficulty"
+									class="stat-number"
+									>-</span
+								>
+								<span class="stat-label"
+									>Average Difficulty</span
+								>
+							</div>
+						</div>
+						<div class="completion-actions">
+							<button
+								id="back-to-dashboard"
+								class="btn btn--primary"
+							>
+								Back to Dashboard
+							</button>
+							<button id="review-more" class="btn btn--outline">
+								Review More
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Edit Topic Modal -->
+		<div id="edit-topic-modal" class="modal hidden">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3>Edit Topic</h3>
+					<button id="close-edit-modal" class="btn-close">
+						&times;
+					</button>
+				</div>
+				<div class="modal-body">
+					<form id="edit-topic-form">
+						<input type="hidden" id="edit-topic-id" name="id" />
+
+						<div class="form-group">
+							<label class="form-label" for="edit-topic-name"
+								>Topic Name *</label
+							>
+							<input
+								type="text"
+								id="edit-topic-name"
+								name="name"
+								class="form-control"
+								required
+							/>
+						</div>
+
+						<!-- Description moved just below Topic Name (Edit) -->
+						<div class="form-group">
+							<label
+								class="form-label"
+								for="edit-topic-description"
+								>Description</label
+							>
+							<textarea
+								id="edit-topic-description"
+								name="description"
+								class="form-control"
+								rows="3"
+								placeholder="Describe the concept, key points, or techniques..."
+							></textarea>
+						</div>
+
+						<!-- Categories for Edit -->
+						<div class="form-group">
+							<div class="inline-header">
+								<label
+									class="form-label"
+									id="edit-topic-additional-categories-label"
+									>Categories *</label
+								>
+								<div class="inline-actions">
+									<input
+										type="text"
+										id="edit-new-category-name"
+										class="form-control input-sm"
+										placeholder="New category..."
+									/>
+									<button
+										type="button"
+										id="edit-category-btn"
+										class="btn btn--outline btn--sm"
+									>
+										Add Category
+									</button>
+								</div>
+							</div>
+							<div
+								id="edit-topic-additional-categories"
+								class="checkbox-group"
+								role="group"
+								aria-labelledby="edit-topic-additional-categories-label"
+							></div>
+						</div>
+
+						<!-- Sub-Categories for Edit (optional) -->
+						<div class="form-group">
+							<div class="inline-header">
+								<label
+									class="form-label"
+									id="edit-topic-subcategories-label"
+									>Sub-Categories (optional)</label
+								>
+								<div class="inline-actions">
+									<input
+										type="text"
+										id="edit-new-subcategory-name"
+										class="form-control input-sm"
+										placeholder="New sub-category..."
+									/>
+									<select
+										id="edit-subcategory-parent"
+										class="form-control input-sm"
+									></select>
+									<button
+										type="button"
+										id="edit-subcategory-btn"
+										class="btn btn--outline btn--sm"
+									>
+										Add Sub-Category
+									</button>
+								</div>
+							</div>
+							<div
+								id="edit-topic-subcategories"
+								class="checkbox-group"
+								role="group"
+								aria-labelledby="edit-topic-subcategories-label"
+							></div>
+						</div>
+
+						<div class="form-actions">
+							<button type="submit" class="btn btn--primary">
+								Update Topic
+							</button>
+							<button
+								type="button"
+								id="cancel-edit-topic"
+								class="btn btn--outline"
+							>
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Delete Confirmation Modal -->
+		<div id="deleteModal" class="modal hidden">
+			<div class="modal-content">
+				<h3>Confirm Delete</h3>
+				<p>
+					Are you sure you want to delete this topic? This action
+					cannot be undone.
+				</p>
+				<div class="modal-actions">
+					<button class="btn btn--outline" id="cancelDelete">
+						Cancel
+					</button>
+					<button class="btn btn--primary" id="confirmDelete">
+						Delete
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Generic Confirm Modal -->
+		<div id="confirm-modal" class="modal hidden">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 id="confirm-modal-title">Confirm</h3>
+					<button id="confirm-modal-close" class="btn-close">
+						&times;
+					</button>
+				</div>
+				<div class="modal-body">
+					<p id="confirm-modal-message">Are you sure?</p>
+				</div>
+				<div class="modal-actions">
+					<button id="confirm-modal-cancel" class="btn btn--outline">
+						Cancel
+					</button>
+					<button id="confirm-modal-confirm" class="btn btn--primary">
+						Confirm
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Input Modal (for rename) -->
+		<div id="input-modal" class="modal hidden">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 id="input-modal-title">Update</h3>
+					<button id="input-modal-close" class="btn-close">
+						&times;
+					</button>
+				</div>
+				<div class="modal-body">
+					<p id="input-modal-message">Enter a new value</p>
+					<input
+						id="input-modal-input"
+						type="text"
+						class="form-control"
+					/>
+				</div>
+				<div class="modal-actions">
+					<button id="input-modal-cancel" class="btn btn--outline">
+						Cancel
+					</button>
+					<button id="input-modal-confirm" class="btn btn--primary">
+						Update
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="app.js"></script>
+	</body>
+</html>

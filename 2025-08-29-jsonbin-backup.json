@@ -1,0 +1,301 @@
+{
+  "topics": [
+    {
+      "id": "1755537729796",
+      "name": "Rotate (left, right) the array by K places. https://leetcode.com/problems/rotate-array/description/",
+      "category": "Array",
+      "subCategory": "Prefix Sum",
+      "description": "Rotate (left, right) the array by K places.\nWrite all the approaches. \n1. brute force : shift the array k times. \n2. use an extra array. then copy values into original array. \n3. cyclic replacement. \n4. reverse",
+      "easeFactor": 2.36,
+      "interval": 1,
+      "repetitions": 1,
+      "nextReviewDate": "2025-08-19",
+      "dateAdded": "2025-08-18",
+      "categories": [
+        "Array",
+        "Backtracking",
+        "Binary Search"
+      ]
+    },
+    {
+      "id": "1755569333689",
+      "name": "Move zeroes to end",
+      "category": "Array",
+      "subCategory": "Two-Pointer",
+      "description": "https://leetcode.com/problems/move-zeroes/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-19",
+      "dateAdded": "2025-08-19"
+    },
+    {
+      "id": "1755572380352",
+      "name": "Merge Sorted Array",
+      "category": "Array",
+      "subCategory": "Two-Pointer",
+      "description": "https://leetcode.com/problems/merge-sorted-array/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-19",
+      "dateAdded": "2025-08-19"
+    },
+    {
+      "id": "1755575200583",
+      "name": "Intersection of Two Arrays",
+      "category": "Array",
+      "subCategory": "Two-Pointer",
+      "description": "https://leetcode.com/problems/intersection-of-two-arrays/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-19",
+      "dateAdded": "2025-08-19"
+    },
+    {
+      "id": "1755606151649",
+      "name": "Find common character",
+      "category": "String",
+      "subCategory": "None",
+      "description": "https://leetcode.com/problems/find-common-characters/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-19",
+      "dateAdded": "2025-08-19"
+    },
+    {
+      "id": "1755712745126",
+      "name": "1) Count subarray Sum Equals K, 2) Longest Subarray With Sum K",
+      "category": "Array",
+      "subCategory": "None",
+      "description": "1) https://leetcode.com/problems/subarray-sum-equals-k/description/     2) https://www.naukri.com/code360/problems/longest-subarray-with-sum-k_6682399?leftPanelTabValue=PROBLEM",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-20",
+      "dateAdded": "2025-08-20"
+    },
+    {
+      "id": "1756356279243",
+      "name": "Set Matrix Zeroes",
+      "category": "Grid",
+      "subCategory": "None",
+      "description": "https://leetcode.com/problems/set-matrix-zeroes/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756356308154",
+      "name": "Spiral Matrix",
+      "category": "Grid",
+      "subCategory": "None",
+      "description": "https://leetcode.com/problems/spiral-matrix/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756356348219",
+      "name": "Longest Consecutive Sequence",
+      "category": "Array",
+      "subCategory": "None",
+      "description": "https://leetcode.com/problems/longest-consecutive-sequence/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756356373522",
+      "name": "Maximum Subarray",
+      "category": "Array",
+      "subCategory": "None",
+      "description": "https://leetcode.com/problems/maximum-subarray/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756356407451",
+      "name": "Subarray Sum Equals K",
+      "category": "Array",
+      "subCategory": "Prefix Sum",
+      "description": "https://leetcode.com/problems/subarray-sum-equals-k/description/",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756357743717",
+      "name": "Pascal's Triangle",
+      "category": "Array",
+      "subCategory": "None",
+      "description": "https://leetcode.com/problems/pascals-triangle/description/\n\nThis is also solved with DP.",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756401280183",
+      "name": "Merge sort",
+      "category": "Sorting",
+      "subCategory": "None",
+      "description": "https://www.youtube.com/watch?v=ogjf7ORKfd8",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756404784063",
+      "name": "Understand Time and Space complexity of recursive calls",
+      "category": "Recursion",
+      "subCategory": "None",
+      "description": "",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    },
+    {
+      "id": "1756404844824",
+      "name": "Quick sort",
+      "category": "Sorting",
+      "subCategory": "None",
+      "description": "https://www.youtube.com/watch?v=WIrA4YexLRQ",
+      "easeFactor": 2.5,
+      "interval": 0,
+      "repetitions": 0,
+      "nextReviewDate": "2025-08-28",
+      "dateAdded": "2025-08-28"
+    }
+  ],
+  "categories": [
+    "Array",
+    "Backtracking",
+    "Binary Search",
+    "Bit Manipulation",
+    "Dynamic Programming",
+    "Graph",
+    "Greedy",
+    "Grid",
+    "Hash Table",
+    "Heap",
+    "Linked List",
+    "Queue",
+    "Recursion",
+    "Sorting",
+    "Stack",
+    "String",
+    "Tree",
+    "Trie"
+  ],
+  "subCategories": {
+    "Array": [
+      "Misc Hard Questions",
+      "None",
+      "Prefix Sum",
+      "Sliding Window",
+      "Two-Pointer"
+    ],
+    "Tree": [
+      "Traversal",
+      "Binary Search Tree",
+      "Construction"
+    ],
+    "Sorting": [
+      "Comparison Sort",
+      "Divide & Conquer",
+      "Non-Comparison",
+      "None"
+    ],
+    "Dynamic Programming": [
+      "Memoization",
+      "Tabulation",
+      "Optimization"
+    ],
+    "Graph": [
+      "Traversal",
+      "Shortest Path",
+      "Minimum Spanning Tree"
+    ],
+    "String": [
+      "Manipulation",
+      "None",
+      "Parsing",
+      "Pattern Matching"
+    ],
+    "Hash Table": [
+      "Hashing",
+      "Collision Resolution",
+      "Applications"
+    ],
+    "Stack": [
+      "Basic Operations",
+      "Expression Evaluation",
+      "Applications"
+    ],
+    "Queue": [
+      "Basic Operations",
+      "Priority Queue",
+      "Applications"
+    ],
+    "Backtracking": [
+      "Permutations",
+      "Combinations",
+      "Constraint Satisfaction"
+    ],
+    "Greedy": [
+      "Activity Selection",
+      "Huffman Coding",
+      "Optimization"
+    ],
+    "Binary Search": [
+      "Search Space",
+      "Binary Search Tree",
+      "Applications"
+    ],
+    "Linked List": [
+      "Single",
+      "Double",
+      "Circular"
+    ],
+    "Heap": [
+      "Min Heap",
+      "Max Heap",
+      "Applications"
+    ],
+    "Trie": [
+      "Construction",
+      "Search",
+      "Applications"
+    ],
+    "Bit Manipulation": [
+      "Basic Operations",
+      "Bit Masks",
+      "Applications"
+    ],
+    "Grid": [
+      "None"
+    ],
+    "Recursion": [
+      "None"
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+    renderTopicsList(topics) {
+        const container = document.getElementById('topics-list');
+        if (!container) return;
+
+        if (topics.length === 0) {
+            let emptyMessage = 'No topics found. Add your first topic to get started with spaced repetition learning.';
+            if (this.selectedCategoryFilter !== 'all') {
+                emptyMessage = `No topics found in "${this.selectedCategoryFilter}"`;
+                if (this.selectedSubCategoryFilter !== 'all') {
+                    emptyMessage += ` > "${this.selectedSubCategoryFilter}"`;
+                }
+                emptyMessage += '.';
+            }
+
+            container.innerHTML = `
+                <div class="empty-state">
+                    <h3>No topics found</h3>
+                    <p>${emptyMessage}</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = topics.map(topic => {
+            const dueStatus = this.getDueStatus(topic);
+            const categories = Array.isArray(topic.categories) && topic.categories.length > 0
+                ? topic.categories
+                : (topic.category ? [topic.category] : []);
+            const categoriesHtml = categories.map(c => `<span class="status status--info">${this.escapeHtml(c)}</span>`).join(' ');
+            return `
+                <div class="topic-item">
+                    <div class="topic-header">
+                        <h4 class="topic-name">${this.escapeHtml(topic.name)}</h4>
+                        <div class="topic-actions">
+                            <button class="btn btn--outline btn--sm" onclick="editTopic('${topic.id}')">Edit</button>
+                            <button class="btn btn--outline btn--sm" onclick="deleteTopic('${topic.id}')">Delete</button>
+                        </div>
+                    </div>
+                    <div class="topic-category">
+                        ${categoriesHtml}
+                        <span class="status status--success">${this.escapeHtml(topic.subCategory || 'No Sub-Category')}</span>
+                    </div>
+                    <p class="topic-description">${this.escapeHtml(topic.description || 'No description provided.')}</p>
+                    <div class="topic-meta">
+                        <span>Added: ${this.formatDate(topic.dateAdded)}</span>
+                        <span class="topic-due-status ${dueStatus.class}">${dueStatus.text}</span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    getDueStatus(topic) {
+        const today = this.getCurrentDate();
+        const nextReview = topic.nextReviewDate;
+
+        if (nextReview < today) {
+            return { class: 'overdue', text: 'Overdue' };
+        } else if (nextReview === today) {
+            return { class: 'due-today', text: 'Due Today' };
