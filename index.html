@@ -25,6 +25,14 @@
 				</div>
 				<div class="header__right">
 					<button
+						id="settings-btn"
+						class="btn btn--outline btn--sm"
+						aria-label="Open settings"
+						title="Settings"
+					>
+						Settings
+					</button>
+					<button
 						id="theme-toggle"
 						class="btn btn--outline btn--sm"
 						aria-pressed="false"
@@ -534,6 +542,52 @@
 							<button
 								type="button"
 								id="cancel-edit-topic"
+								class="btn btn--outline"
+							>
+								Cancel
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<!-- Settings View -->
+		<div id="settings-view" class="view container">
+			<div class="card">
+				<div class="card__header">
+					<h2>Settings</h2>
+				</div>
+				<div class="card__body">
+					<form id="settings-form">
+						<div class="form-group">
+							<label
+								class="form-label"
+								for="notification-times-input"
+								>Reminder Times (HH:MM, 24h)</label
+							>
+							<input
+								id="notification-times-input"
+								type="text"
+								class="form-control"
+								placeholder="e.g., 09:00, 18:00"
+							/>
+							<small class="form-help"
+								>Enter one or more times separated by
+								commas.</small
+							>
+						</div>
+						<div class="form-actions">
+							<button
+								type="submit"
+								id="settings-save"
+								class="btn btn--primary"
+							>
+								Save Settings
+							</button>
+							<button
+								type="button"
+								id="settings-cancel"
 								class="btn btn--outline"
 							>
 								Cancel

@@ -2,208 +2,145 @@
 
 class DSASpacedRepetitionTool {
 	constructor() {
-		// Default categories from the application data (CGPSC)
+		// Default categories from the application data
 		this.defaultCategories = [
-			"Chhattisgarh History",
-			"Chhattisgarh Geography",
-			"Chhattisgarh Economy",
-			"Chhattisgarh Polity & Governance",
-			"Chhattisgarh Culture",
-			"Indian Polity",
-			"Indian History",
-			"Indian Geography",
-			"Indian Economy",
-			"Environment & Ecology",
-			"Science & Tech",
-			"Current Affairs",
-			"International Relations",
-			"Constitutional Bodies",
-			"Government Schemes",
-			"Ethics & Integrity",
+			"Array",
+			"Tree",
+			"Sorting",
+			"Dynamic Programming",
+			"Graph",
+			"String",
+			"Hash Table",
+			"Stack",
+			"Queue",
+			"Backtracking",
+			"Greedy",
+			"Binary Search",
+			"Linked List",
+			"Heap",
+			"Trie",
+			"Bit Manipulation",
 		];
 
 		// Default sub-categories
 		this.defaultSubCategories = {
-			"Chhattisgarh History": [
-				"Ancient",
-				"Medieval",
-				"Modern",
-				"Freedom Struggle in CG",
+			Array: ["Two-Pointer", "Sliding Window", "Prefix Sum"],
+			Tree: ["Traversal", "Binary Search Tree", "Construction"],
+			Sorting: ["Divide & Conquer", "Comparison Sort", "Non-Comparison"],
+			"Dynamic Programming": [
+				"Memoization",
+				"Tabulation",
+				"Optimization",
 			],
-			"Chhattisgarh Geography": [
-				"Physical Features",
-				"Climate & Rainfall",
-				"Rivers & Irrigation",
-				"Minerals & Resources",
+			Graph: ["Traversal", "Shortest Path", "Minimum Spanning Tree"],
+			String: ["Pattern Matching", "Manipulation", "Parsing"],
+			"Hash Table": ["Hashing", "Collision Resolution", "Applications"],
+			Stack: [
+				"Basic Operations",
+				"Expression Evaluation",
+				"Applications",
 			],
-			"Chhattisgarh Economy": [
-				"Agriculture",
-				"Industries",
-				"Mineral Economy",
-				"Infrastructure & Energy",
+			Queue: ["Basic Operations", "Priority Queue", "Applications"],
+			Backtracking: [
+				"Permutations",
+				"Combinations",
+				"Constraint Satisfaction",
 			],
-			"Chhattisgarh Polity & Governance": [
-				"State Legislature",
-				"Executive",
-				"Judiciary",
-				"Panchayati Raj",
-				"Administration",
+			Greedy: ["Activity Selection", "Huffman Coding", "Optimization"],
+			"Binary Search": [
+				"Search Space",
+				"Binary Search Tree",
+				"Applications",
 			],
-			"Chhattisgarh Culture": [
-				"Tribes",
-				"Festivals",
-				"Art & Crafts",
-				"Music & Dance",
-				"Languages & Literature",
-			],
-			"Indian Polity": [
-				"Constitution",
-				"Parliament",
-				"Judiciary",
-				"Federalism",
-				"Local Governance",
-			],
-			"Indian History": [
-				"Ancient",
-				"Medieval",
-				"Modern",
-				"Freedom Struggle",
-			],
-			"Indian Geography": [
-				"Physical",
-				"Indian Mapping",
-				"Economic Geography",
-				"World Geography",
-			],
-			"Indian Economy": [
-				"Macroeconomy",
-				"Agriculture",
-				"Infrastructure",
-				"Banking & Finance",
-			],
-			"Environment & Ecology": [
-				"Biodiversity",
-				"Conservation",
-				"Climate Change",
-				"Pollution & Laws",
-			],
-			"Science & Tech": [
-				"Space",
-				"Biotechnology",
-				"ICT",
-				"Energy",
-				"Defense",
-			],
-			"Current Affairs": [
-				"State Affairs",
-				"National Affairs",
-				"International Affairs",
-				"Reports & Indices",
-			],
-			"International Relations": [
-				"India & Neighbours",
-				"Global Organizations",
-				"Summits & Treaties",
-			],
-			"Constitutional Bodies": [
-				"Election Commission",
-				"CAG",
-				"UPSC/State PSC",
-				"Finance Commission",
-			],
-			"Government Schemes": [
-				"State Schemes",
-				"Central Schemes",
-				"Welfare Schemes",
-				"Agriculture & Rural",
-			],
-			"Ethics & Integrity": [
-				"Ethical Theories",
-				"Aptitude & Attitude",
-				"Civil Service Values",
-				"Case Studies",
+			"Linked List": ["Single", "Double", "Circular"],
+			Heap: ["Min Heap", "Max Heap", "Applications"],
+			Trie: ["Construction", "Search", "Applications"],
+			"Bit Manipulation": [
+				"Basic Operations",
+				"Bit Masks",
+				"Applications",
 			],
 		};
 
-		// Sample topics data with sub-categories (CGPSC)
+		// Sample topics data with sub-categories
 		this.sampleTopics = [
 			{
-				id: "C1",
-				name: "Freedom Fighters of Chhattisgarh",
-				category: "Chhattisgarh History",
-				subCategory: "Freedom Struggle in CG",
+				id: "1",
+				name: "Two Pointers Technique",
+				category: "Array",
+				subCategory: "Two-Pointer",
 				description:
-					"Key leaders like Veer Narayan Singh and their contribution to the freedom struggle in Chhattisgarh",
-				easeFactor: 2.3,
-				interval: 2,
-				repetitions: 1,
-				nextReviewDate: "2025-08-02",
-				dateAdded: "2025-08-30",
+					"Using two pointers to solve problems efficiently, like finding pairs or detecting cycles",
+				easeFactor: 2.5,
+				interval: 0,
+				repetitions: 0,
+				nextReviewDate: "2025-08-18",
+				dateAdded: "2025-08-17",
 			},
 			{
-				id: "C2",
-				name: "Mineral Wealth of Chhattisgarh",
-				category: "Chhattisgarh Geography",
-				subCategory: "Minerals & Resources",
+				id: "2",
+				name: "Binary Tree Traversal",
+				category: "Tree",
+				subCategory: "Traversal",
 				description:
-					"Major minerals like coal, iron ore, bauxite; their distribution and role in economy",
-				easeFactor: 2.5,
+					"Inorder, preorder, postorder traversal methods both recursive and iterative",
+				easeFactor: 2.3,
 				interval: 3,
 				repetitions: 2,
-				nextReviewDate: "2025-09-03",
-				dateAdded: "2025-08-26",
+				nextReviewDate: "2025-08-15",
+				dateAdded: "2025-08-10",
 			},
 			{
-				id: "C3",
-				name: "Tribal Culture of Bastar",
-				category: "Chhattisgarh Culture",
-				subCategory: "Tribes",
+				id: "3",
+				name: "Merge Sort Algorithm",
+				category: "Sorting",
+				subCategory: "Divide & Conquer",
 				description:
-					"Important tribes, their customs, festivals, and impact on Chhattisgarh’s socio-cultural fabric",
+					"Divide and conquer sorting algorithm with O(n log n) time complexity",
 				easeFactor: 2.6,
-				interval: 5,
-				repetitions: 2,
-				nextReviewDate: "2025-08-25",
-				dateAdded: "2025-08-20",
+				interval: 7,
+				repetitions: 3,
+				nextReviewDate: "2025-08-18",
+				dateAdded: "2025-08-05",
 			},
 			{
-				id: "C4",
-				name: "State Legislature of Chhattisgarh",
-				category: "Chhattisgarh Polity & Governance",
-				subCategory: "State Legislature",
+				id: "4",
+				name: "Dynamic Programming - Fibonacci",
+				category: "Dynamic Programming",
+				subCategory: "Memoization",
 				description:
-					"Structure, powers, and role of Vidhan Sabha and Vidhan Parishad (if applicable) in governance",
+					"Using memoization and tabulation to optimize recursive solutions",
+				easeFactor: 2.1,
+				interval: 1,
+				repetitions: 1,
+				nextReviewDate: "2025-08-18",
+				dateAdded: "2025-08-16",
+			},
+			{
+				id: "5",
+				name: "Graph BFS/DFS",
+				category: "Graph",
+				subCategory: "Traversal",
+				description:
+					"Breadth-first and depth-first search algorithms for graph traversal",
 				easeFactor: 2.4,
 				interval: 4,
 				repetitions: 2,
-				nextReviewDate: "2025-08-30",
-				dateAdded: "2025-08-23",
+				nextReviewDate: "2025-08-19",
+				dateAdded: "2025-08-12",
 			},
 			{
-				id: "C5",
-				name: "Narmada-Son-Mahanadi River System",
-				category: "Chhattisgarh Geography",
-				subCategory: "Rivers & Irrigation",
+				id: "6",
+				name: "Sliding Window Pattern",
+				category: "Array",
+				subCategory: "Sliding Window",
 				description:
-					"River basins, irrigation projects, interlinkages, and their importance for agriculture and economy",
+					"Technique for finding subarrays that satisfy certain conditions efficiently",
 				easeFactor: 2.7,
-				interval: 7,
-				repetitions: 3,
-				nextReviewDate: "2025-09-07",
-				dateAdded: "2025-08-18",
-			},
-			{
-				id: "C6",
-				name: "Biodiversity Hotspots of Chhattisgarh",
-				category: "Environment & Ecology",
-				subCategory: "Biodiversity",
-				description:
-					"Important national parks, sanctuaries like Indravati, Barnawapara; key flora and fauna",
-				easeFactor: 2.5,
-				interval: 6,
-				repetitions: 2,
-				nextReviewDate: "2025-09-06",
-				dateAdded: "2025-08-22",
+				interval: 12,
+				repetitions: 4,
+				nextReviewDate: "2025-08-20",
+				dateAdded: "2025-08-01",
 			},
 		];
 
@@ -222,6 +159,15 @@ class DSASpacedRepetitionTool {
 		this.overdueDaysFilter = "";
 		this.overdueDaysOperator = "gte";
 
+		// Browser notification settings
+		// Daily schedule for due-count notifications (24h format HH:MM, local time)
+		this.notificationTimes = ["09:00", "18:00"]; // Default; can be overridden by cloud prefs
+		this._notificationTimeout = null;
+
+		// Preference handling and optional local mirroring for notifications
+		this._useLocalForNotifications = false; // set true only if required
+		this.preferences = { theme: null, notificationTimes: null };
+
 		this.init();
 	}
 
@@ -233,6 +179,8 @@ class DSASpacedRepetitionTool {
 		this.populateCategoryDropdowns();
 		this.updateDashboard();
 		this.checkOverduePopup();
+		this.syncNotificationTimesLocal();
+		this.initNotifications();
 	}
 
 	// Local Storage Management
@@ -273,6 +221,121 @@ class DSASpacedRepetitionTool {
 		}
 	}
 
+	// Notifications: scheduled reminders at specific local times
+	initNotifications() {
+		try {
+			if (
+				typeof window === "undefined" ||
+				typeof Notification === "undefined"
+			) {
+				return; // Environment doesn't support Notifications
+			}
+
+			// Clear any previous timeout if re-initialized
+			if (this._notificationTimeout) {
+				clearTimeout(this._notificationTimeout);
+				this._notificationTimeout = null;
+			}
+
+			const scheduleNext = () => {
+				const delay = this._msUntilNextNotification();
+				if (delay == null) return; // No valid schedule
+				this._notificationTimeout = setTimeout(() => {
+					this.showDueNotification({ silentIfZero: true });
+					scheduleNext();
+				}, delay);
+			};
+
+			// Request permission if needed, then schedule
+			if (Notification.permission === "granted") {
+				scheduleNext();
+			} else if (Notification.permission === "default") {
+				Notification.requestPermission().then((perm) => {
+					if (perm === "granted") scheduleNext();
+				});
+			}
+		} catch (e) {
+			// Fail silently if notifications not available
+			console.warn("Notifications unavailable:", e);
+		}
+	}
+
+	// Compute milliseconds until the next scheduled notification time
+	_msUntilNextNotification() {
+		try {
+			if (
+				!Array.isArray(this.notificationTimes) ||
+				this.notificationTimes.length === 0
+			)
+				return null;
+			const now = new Date();
+			let nextAt = null;
+			for (const t of this.notificationTimes) {
+				const [hh, mm] = String(t)
+					.split(":")
+					.map((x) => parseInt(x, 10));
+				if (!Number.isFinite(hh) || !Number.isFinite(mm)) continue;
+				const cand = new Date(now);
+				cand.setHours(hh, mm, 0, 0);
+				let when = cand;
+				if (when <= now) {
+					when = new Date(cand);
+					when.setDate(cand.getDate() + 1);
+				}
+				if (!nextAt || when < nextAt) nextAt = when;
+			}
+			if (!nextAt) return null;
+			const delay = nextAt.getTime() - now.getTime();
+			return Math.max(0, delay);
+		} catch {
+			return null;
+		}
+	}
+
+	showDueNotification(options = {}) {
+		const { silentIfZero = false } = options;
+		try {
+			if (
+				typeof Notification === "undefined" ||
+				Notification.permission !== "granted"
+			) {
+				return;
+			}
+			const dueCount = this.getDueItems().length;
+			if (dueCount <= 0 && silentIfZero) return;
+
+			const title =
+				dueCount > 0
+					? "Spaced Repetition: Items Due"
+					: "Spaced Repetition";
+			const body =
+				dueCount > 0
+					? `${dueCount} topic${
+							dueCount === 1 ? "" : "s"
+					  } due right now.`
+					: "No topics due right now.";
+
+			const n = new Notification(title, {
+				body,
+				icon: "assets/favicon.png",
+				tag: "dsa-due-reminder",
+				renotify: true,
+			});
+			n.onclick = () => {
+				try {
+					// Focus existing tab if possible, else open the app
+					window.focus();
+					if (document.visibilityState !== "visible") {
+						// Best-effort open in a new tab/window
+						window.open("index.html", "_blank");
+					}
+				} catch {}
+			};
+		} catch (e) {
+			console.warn("Failed to show notification:", e);
+		}
+	}
+
 	// saveToCloud() {
 	//     try {
 	//         localStorage.setItem('dsaTool_topics', JSON.stringify(this.topics));
@@ -299,6 +362,15 @@ class DSASpacedRepetitionTool {
 					categories: this.categories,
 					subCategories: this.subCategories,
 					reviewLog: this.reviewLog,
+					preferences: {
+						theme:
+							this.preferences?.theme ||
+							document.documentElement.getAttribute(
+								"data-color-scheme"
+							) ||
+							null,
+						notificationTimes: this.notificationTimes || [],
+					},
 				}),
 			});
 		} catch (error) {
@@ -326,12 +398,24 @@ class DSASpacedRepetitionTool {
 			this.reviewLog = Array.isArray(data.record.reviewLog)
 				? data.record.reviewLog
 				: [];
+
+			// Preferences
+			this.preferences = data.record.preferences || {};
+			if (
+				Array.isArray(this.preferences.notificationTimes) &&
+				this.preferences.notificationTimes.every(
+					(s) => typeof s === "string"
+				)
+			) {
+				this.notificationTimes = this.preferences.notificationTimes;
+			}
 		} catch (error) {
 			console.error("Error loading:", error);
 			this.topics = [...this.sampleTopics];
 			this.categories = [...this.defaultCategories];
 			this.subCategories = { ...this.defaultSubCategories };
 			this.reviewLog = [];
+			this.preferences = {};
 		}
 	}
 
@@ -342,6 +426,14 @@ class DSASpacedRepetitionTool {
 		if (themeToggle) {
 			themeToggle.addEventListener("click", () => {
 				this.toggleTheme();
+			});
+		}
+
+		// Settings button
+		const settingsBtn = document.getElementById("settings-btn");
+		if (settingsBtn) {
+			settingsBtn.addEventListener("click", () => {
+				this.switchView("settings");
 			});
 		}
 
@@ -798,6 +890,28 @@ class DSASpacedRepetitionTool {
 		// Make functions available globally for onclick handlers
 		window.deleteTopic = (topicId) => this.deleteTopic(topicId);
 		window.editTopic = (topicId) => this.openEditModal(topicId);
+
+		// Settings form handlers
+		const settingsForm = document.getElementById("settings-form");
+		const settingsSave = document.getElementById("settings-save");
+		const settingsCancel = document.getElementById("settings-cancel");
+		if (settingsForm) {
+			settingsForm.addEventListener("submit", (e) => {
+				e.preventDefault();
+				this.handleSettingsSave();
+			});
+		}
+		if (settingsSave) {
+			settingsSave.addEventListener("click", (e) => {
+				e.preventDefault();
+				this.handleSettingsSave();
+			});
+		}
+		if (settingsCancel) {
+			settingsCancel.addEventListener("click", () => {
+				this.switchView("dashboard");
+			});
+		}
 	}
 
 	// View Management
@@ -828,7 +942,67 @@ class DSASpacedRepetitionTool {
 				this.resetAddTopicForm();
 				this.populateCategoryDropdowns();
 			}
+			// Populate settings when opened
+			if (viewName === "settings") {
+				this.populateSettingsForm();
+			}
 		}
+	}
+
+	// Settings: load/save and form helpers
+	// Local mirroring only if required for notifications; otherwise avoid localStorage.
+	syncNotificationTimesLocal() {
+		if (!this._useLocalForNotifications) return;
+		try {
+			localStorage.setItem(
+				"dsaTool_notificationTimes",
+				JSON.stringify(this.notificationTimes || [])
+			);
+		} catch {}
+	}
+
+	populateSettingsForm() {
+		const input = document.getElementById("notification-times-input");
+		if (input) {
+			input.value = (this.notificationTimes || []).join(", ");
+		}
+	}
+
+	parseNotificationTimes(str) {
+		if (!str) return [];
+		return String(str)
+			.split(",")
+			.map((s) => s.trim())
+			.filter((s) => s.length > 0)
+			.map((s) => {
+				const m = s.match(/^([01]?\d|2[0-3]):([0-5]\d)$/);
+				return m ? `${m[1].padStart(2, "0")}:${m[2]}` : null;
+			})
+			.filter(Boolean);
+	}
+
+	handleSettingsSave() {
+		const input = document.getElementById("notification-times-input");
+		if (!input) return;
+		const parsed = this.parseNotificationTimes(input.value);
+		if (parsed.length === 0) {
+			this.showAlert(
+				"Please enter at least one valid time (HH:MM).",
+				"error"
+			);
+			return;
+		}
+		this.notificationTimes = parsed;
+		// Update cloud preferences and optionally mirror to local
+		this.preferences = {
+			...this.preferences,
+			notificationTimes: this.notificationTimes,
+		};
+		this.saveToCloud();
+		this.syncNotificationTimesLocal();
+		this.initNotifications(); // reschedule with new times
+		this.showAlert("Settings saved.", "success");
+		this.switchView("dashboard");
 	}
 
 	// Category Management
@@ -2002,8 +2176,14 @@ class DSASpacedRepetitionTool {
 			t.setHours(0, 0, 0, 0);
 			const oneDay = 24 * 60 * 60 * 1000;
 			filtered = filtered.filter((topic) => {
-				if (!topic.nextReviewDate || topic.nextReviewDate >= today)
-					return false;
+				if (!topic.nextReviewDate) return false;
+				// For "lte", include items due today (treat as 0 days overdue).
+				// For "gte" (default), keep previous behavior: strictly overdue only.
+				if (this.overdueDaysOperator === "lte") {
+					if (topic.nextReviewDate > today) return false; // exclude future
+				} else {
+					if (topic.nextReviewDate >= today) return false; // exclude today and future
+				}
 				const n = new Date(topic.nextReviewDate);
 				n.setHours(0, 0, 0, 0);
 				const daysOverdue = Math.floor((t - n) / oneDay);
@@ -2663,11 +2843,11 @@ class DSASpacedRepetitionTool {
 		const el = document.getElementById("ef-distribution");
 		if (!el) return;
 		const buckets = [
-			{ label: "1.3-1.6", min: 1.3, max: 1.6 },
-			{ label: "1.6-2.0", min: 1.6, max: 2.0 },
-			{ label: "2.0-2.4", min: 2.0, max: 2.4 },
-			{ label: "2.4-2.8", min: 2.4, max: 2.8 },
-			{ label: "2.8-3.5", min: 2.8, max: 3.5 },
+			{ label: "1.3–1.6", min: 1.3, max: 1.6 },
+			{ label: "1.6–2.0", min: 1.6, max: 2.0 },
+			{ label: "2.0–2.4", min: 2.0, max: 2.4 },
+			{ label: "2.4–2.8", min: 2.4, max: 2.8 },
+			{ label: "2.8–3.5", min: 2.8, max: 3.5 },
 		];
 		const counts = buckets.map((b) => ({
 			label: b.label,
@@ -2684,11 +2864,11 @@ class DSASpacedRepetitionTool {
 		const ranges = [
 			{ label: "0", test: (x) => x === 0 },
 			{ label: "1", test: (x) => x === 1 },
-			{ label: "2-3", test: (x) => x >= 2 && x <= 3 },
-			{ label: "4-7", test: (x) => x >= 4 && x <= 7 },
-			{ label: "8-14", test: (x) => x >= 8 && x <= 14 },
-			{ label: "15-30", test: (x) => x >= 15 && x <= 30 },
-			{ label: "31-90", test: (x) => x >= 31 && x <= 90 },
+			{ label: "2–3", test: (x) => x >= 2 && x <= 3 },
+			{ label: "4–7", test: (x) => x >= 4 && x <= 7 },
+			{ label: "8–14", test: (x) => x >= 8 && x <= 14 },
+			{ label: "15–30", test: (x) => x >= 15 && x <= 30 },
+			{ label: "31–90", test: (x) => x >= 31 && x <= 90 },
 			{ label: "90+", test: (x) => x > 90 },
 		];
 		const counts = ranges.map((r) => ({
@@ -2772,9 +2952,9 @@ class DSASpacedRepetitionTool {
 	}
 	// Utility Functions
 	initTheme() {
-		const stored = localStorage.getItem("dsaTool_theme");
+		// Prefer cloud preference if available; fallback to system preference
 		let theme =
-			stored ||
+			(this.preferences && this.preferences.theme) ||
 			(window.matchMedia &&
 			window.matchMedia("(prefers-color-scheme: dark)").matches
 				? "dark"
@@ -2784,7 +2964,9 @@ class DSASpacedRepetitionTool {
 
 	applyTheme(theme) {
 		document.documentElement.setAttribute("data-color-scheme", theme);
-		localStorage.setItem("dsaTool_theme", theme);
+		// Persist preference to cloud instead of localStorage
+		this.preferences = { ...this.preferences, theme };
+		this.saveToCloud();
 		const btn = document.getElementById("theme-toggle");
 		if (btn) {
 			const isDark = theme === "dark";
